@@ -24,7 +24,7 @@ function GoalInput({onPressHandler, onCancelPress, isVisible}) {
                     onChangeText={goalInputHandler}
                     clearButtonMode={"always"}
                     value={inputText}
-                    placeholderTextColor={'rgba(255, 255, 255, 0.4)'}
+                    placeholderTextColor={'rgb(0,0,0)'}
                 />
                 <View style={styles.buttonContainer}>
                     <View style={styles.button}>
@@ -34,7 +34,7 @@ function GoalInput({onPressHandler, onCancelPress, isVisible}) {
                                 onPressHandler(inputText);
                                 setInputText('')
                             }}
-                            color={'#5e0acc'}
+                            color={'#8e4eec'}
                         ></Button>
                     </View>
                     <View style={styles.button}>
@@ -66,11 +66,13 @@ const styles = StyleSheet.create({
     },
     textInput: {
         width: '100%',
-        padding: 8,
+        padding: 16,
         color: 'white',
+        backgroundColor: "#e4d0ff",
         letterSpacing: 0.5,
         borderWidth: 1,
-        borderColor: 'lightgray',
+        borderColor: '#e4d0ff',
+        borderRadius: 6
     },
     buttonContainer: {
         marginTop: 32,

@@ -1,5 +1,5 @@
-import {useState} from "react"
-import {Button, FlatList, StyleSheet, View} from 'react-native';
+import {Fragment, useState} from "react"
+import {Button, FlatList, StatusBar, StyleSheet, View} from 'react-native';
 import GoalItem from "./components/GoalItem";
 import GoalInput from "./components/GoalInput";
 
@@ -30,30 +30,30 @@ export default function App() {
     }
 
     return (
-        <View style={styles.appContainer}>
-            <Button title={'Add New Goal!'} color={'#5e0acc'} onPress={handleModalOpen}></Button>
-            {
-                isModalOpen &&
-                <GoalInput
+        <Fragment>
+            <StatusBar barStyle={'light-content'}></StatusBar>
+            <View style={styles.appContainer}>
+                <Button title={'Add New Goal!'} color={'#5e0acc'} onPress={handleModalOpen}></Button>
+                {isModalOpen && <GoalInput
                     isVisible={isModalOpen}
                     onPressHandler={addGoalHandler}
                     onCancelPress={handleModalClose}
-                ></GoalInput>
-            }
-            <View style={styles.itemsContainer}>
-                <FlatList
-                    data={items}
-                    renderItem={itemData => {
-                        return <GoalItem
-                            item={itemData.item}
-                            onDelete={deleteGoalHandler}
-                        ></GoalItem>
-                    }}
-                    keyExtractor={item => item.id}
-                >
-                </FlatList>
+                ></GoalInput>}
+                <View style={styles.itemsContainer}>
+                    <FlatList
+                        data={items}
+                        renderItem={itemData => {
+                            return <GoalItem
+                                item={itemData.item}
+                                onDelete={deleteGoalHandler}
+                            ></GoalItem>
+                        }}
+                        keyExtractor={item => item.id}
+                    >
+                    </FlatList>
+                </View>
             </View>
-        </View>
+        </Fragment>
     );
 }
 
